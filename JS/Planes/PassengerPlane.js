@@ -2,21 +2,19 @@ const Plane = require('./Plane');
 
 class PassengerPlane extends Plane {
 
-    //=================CONSTRUCTORS=================
 
-    constructor(model, maxSpeed, maxFlightDistance, maxLoadCapacity, passengersCapacity) {
+    constructor(model, maxSpeed, maxFlightDistance, maxLoadCapacity, passengerCapacity) {
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
-        this._passengersCapacity = passengersCapacity;
+        this.passengerCapacity = passengerCapacity;
     }
 
-    //=================METHODS=================
-    getPassengersCapacity() {
-        return this._passengersCapacity;
+    getPassengerCapacity() {
+        return this.passengerCapacity;
     }
 
-    // set passengersCapacity(value) {
-    //     this._passengersCapacity = value;
-    // }
 }
 
 module.exports = PassengerPlane;
+
+//comment for mentor
+//I think max load capacity is equal to passenger capacity, so it seems excessive?

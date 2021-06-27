@@ -1,115 +1,103 @@
 const PassengerPlane = require('./Planes/PassengerPlane');
 const MilitaryPlane = require('./Planes/MilitaryPlane');
-const MilitaryType = require('./models/militaryType');
-const experimentalPlane = require('./Planes/experimentalPlane');
+const ExperimentalPlane = require('./Planes/ExperimentalPlane');
+
+const militaryType = require('./models/military-type');
+const experimentalType = require('./models/experimental-type');
 
 class Airport {
-
-     getPasPl() {
-        let pl = this.planes;
-        var x = [];
-        for (let p of this.planes) {
-            if (p instanceof PassengerPlane) {x.push(p);}
-        }
-        return x;
-    }
-
-    getMilitaryPlanes() {
-        let militaryPlanes = [];
-        this.planes.forEach(plane => {
-            if (plane instanceof MilitaryPlane) {//if
-                militaryPlanes.push(plane);
-            }
-            //else
-            else{}
-        });
-//return
-        return militaryPlanes;
-    }
-
-    getPassengerPlaneWithMaxPassengersCapacity() {
-        let passengerPlanes = this.getPasPl();
-        let planeWithMaxCapacity = passengerPlanes[0];
-        for (let i = 0; i < passengerPlanes.length; i++) {
-            if (passengerPlanes[i].getPassengersCapacity() >     planeWithMaxCapacity.getPassengersCapacity()) {
-                planeWithMaxCapacity = passengerPlanes[i];
-            }
-        }
-        return planeWithMaxCapacity;
-    }
-
-
-
-
-
-
-
-    getTransportMilitaryPlanes(){
-        let transportMilitaryPlanes = [];
-        let militaryPlanes = this.getMilitaryPlanes();
-        for (let i = 0; i < militaryPlanes.length; i++) {
-        if (militaryPlanes[i].getMilitaryType() == MilitaryType.TYPE_TRANSPORT) {
-        transportMilitaryPlanes.push(militaryPlanes[i]);
-        }
-        }
-        return transportMilitaryPlanes;
-    }
-
-
-    getBomberMilitaryPlanes()
-    {
-        let bomberMilitaryPlanes = [];
-        let militaryPlanes = this.getMilitaryPlanes();
-        for (let i = 0; i < militaryPlanes.length; i++) {
-            if (militaryPlanes[i].getMilitaryType()=== MilitaryType.BOMBER) {
-                bomberMilitaryPlanes.push(militaryPlanes[i]);
-            }
-        }
-        return bomberMilitaryPlanes;
-    }
 
     constructor(planes) {
         this.planes = planes;
     }
 
+    getPassengerPlanes() {
+        let passengerPlanes = [];
+        this.planes.forEach(plane => {
+            if (plane instanceof PassengerPlane) {
+                passengerPlanes.push(plane);
+            } else {}
+        });
+        return passengerPlanes;
+    }
+
+    getMilitaryPlanes() {
+        let militaryPlanes = [];
+        this.planes.forEach(plane => {
+            if (plane instanceof MilitaryPlane) {
+                militaryPlanes.push(plane);
+            } else {}
+        });
+        return militaryPlanes;
+    }
 
     getExperimentalPlanes() {
-        let experimentalPlanes  = [];
+        let experimentalPlanes = [];
         this.planes.forEach(plane => {
-            if (plane instanceof experimentalPlane) {//if
+            if (plane instanceof experimentalPlane) {
                 experimentalPlanes.push(plane);
-            }
+            } else {}
         });
-//return
         return experimentalPlanes;
+    }
+
+
+    getTransportMilitaryPlanes() {
+        let transportMilitaryPlanes = [];
+        let militaryPlanes = this.getMilitaryPlanes();
+        for (let i = 0; i < militaryPlanes.length; i++) {
+            if (militaryPlanes[i].getMilitaryType() == MilitaryType.transport) {
+                transportMilitaryPlanes.push(militaryPlanes[i]);
+            } else {}
+        }
+        return transportMilitaryPlanes;
+    }
+
+
+    getBomberMilitaryPlanes() {
+        let bomberMilitaryPlanes = [];
+        let militaryPlanes = this.getMilitaryPlanes();
+        for (let i = 0; i < militaryPlanes.length; i++) {
+            if (militaryPlanes[i].getMilitaryType() === MilitaryType.bomber) {
+                bomberMilitaryPlanes.push(militaryPlanes[i]);
+            } else {}
+        }
+        return bomberMilitaryPlanes;
+    }
+
+
+    getMaxPassengerCapacityPlanes() {
+        let passengerPlanes = this.getPassengerPlanes();
+        let maxPassengerCapacityPlanes = passengerPlanes[0];
+        for (let i = 0; i < passengerPlanes.length; i++) {
+            if (passengerPlanes[i].getPassengerCapacity() > maxPassengerCapacityPlanes.getPassengerCapacity()) {
+                maxPassengerCapacityPlanes = passengerPlanes[i];
+            }
+        }
+        return maxPassengerCapacityPlanes;
     }
 
 
 
     sortByMaxDistance() {
-        this.planes.sort((a, b) => (a.Get_Max_Flight_Distance() > b.Get_Max_Flight_Distance()) ? 1 : -1);
+        this.planes.sort((a, b) => (a.getMaxFlightDistance() > b.getMaxFlightDistance()) ? 1 : -1);
         return this;
     }
 
-    /**
-     * Sorts by max speed
-     * @return Airport
-     */
+
     sortByMaxSpeed() {
-        this.planes.sort((a, b) => (a.getMS() > b.getMS()) ? 1 : -1);
+        this.planes.sort((a, b) => (a.getMaxSpeed() > b.getMaxSpeed()) ? 1 : -1);
         return this;
     }
 
     sortByMaxLoadCapacity() {
-        this.planes.sort((a, b) => (a.getMinLoadCapacity() > b.getMinLoadCapacity()) ? 1 : -1);
+        this.planes.sort((a, b) => (a.getMaxLoadCapacity() > b.getMaxLoadCapacity()) ? 1 : -1);
         return this;
     }
 
     getPlanes() {
         return this.planes;
     }
-
-
 
 
     static print(planes) {
