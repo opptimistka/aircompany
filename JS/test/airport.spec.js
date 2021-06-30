@@ -1,6 +1,7 @@
 const assert = require('chai').assert;
 const chai = require('chai');
-const describe = chai.describe;
+//const describe = chai.describe;
+//const mocha = require('mocha');
 
 const Plane = require('../Planes/Plane');
 const MilitaryPlane = require('../Planes/MilitaryPlane');
@@ -10,7 +11,7 @@ const experimentalPlane = require('../Planes/ExperimentalPlane');
 const Airport = require('../Airport');
 
 const militaryType = require('../models/military-type');
-const ExperimentalType = require('../models/experimental-type');
+const experimentalType = require('../models/experimental-type');
 const classificationLevel = require('../models/classification-level');
 
 describe('Test for airport.js', () => {

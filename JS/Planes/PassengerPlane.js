@@ -15,6 +15,3 @@ class PassengerPlane extends Plane {
 }
 
 module.exports = PassengerPlane;
-
-//comment for mentor
-//I think max load capacity is equal to passenger capacity, so it seems excessive?
