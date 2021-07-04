@@ -34,7 +34,7 @@ class Airport {
     getExperimentalPlanes() {
         let experimentalPlanes = [];
         this.planes.forEach(plane => {
-            if (plane instanceof experimentalPlane) {
+            if (plane instanceof ExperimentalPlane) {
                 experimentalPlanes.push(plane);
             } 
         });
@@ -46,7 +46,7 @@ class Airport {
         let transportMilitaryPlanes = [];
         let militaryPlanes = this.getMilitaryPlanes();
         for (let i = 0; i < militaryPlanes.length; i++) {
-            if (militaryPlanes[i].getMilitaryType() == MilitaryType.transport) {
+            if (militaryPlanes[i].getMilitaryType() == militaryType.transport) {
                 transportMilitaryPlanes.push(militaryPlanes[i]);
             } 
         }
@@ -58,7 +58,7 @@ class Airport {
         let bomberMilitaryPlanes = [];
         let militaryPlanes = this.getMilitaryPlanes();
         for (let i = 0; i < militaryPlanes.length; i++) {
-            if (militaryPlanes[i].getMilitaryType() === MilitaryType.bomber) {
+            if (militaryPlanes[i].getMilitaryType() === militaryType.bomber) {
                 bomberMilitaryPlanes.push(militaryPlanes[i]);
             } 
         }

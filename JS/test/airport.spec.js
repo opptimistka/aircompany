@@ -51,13 +51,13 @@ describe('Test for airport.js', () => {
 
     it('should check passenger plane with max capacity', () => {
         let airport = new Airport(planes);
-        let expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
+        let expectedPlaneWithMaxPassengersCapacity = airport.getMaxPassengerCapacityPlanes();
         assert.isFalse(expectedPlaneWithMaxPassengersCapacity == planeWithMaxPassengerCapacity);
     });
 
 
     it('test 3', () => {
-        console.log("TEST testGetPassengerPlaneWithMaxCapacity started!");
+        console.log("TEST testGetPassengerPlaneWithMaxLoadCapacity started!");
         let airport = new Airport(planes);
         airport.sortByMaxLoadCapacity();
         let planesSortedByMaxLoadCapacity = airport.getPlanes();
@@ -78,7 +78,7 @@ describe('Test for airport.js', () => {
         let bomberMilitaryPlanes = airport.getBomberMilitaryPlanes();
         let flag = false;
         for (let militaryPlane of bomberMilitaryPlanes) {
-            if (militaryPlane.getMilitaryType() === militaryType.BOMBER) {
+            if (militaryPlane.getMilitaryType() === militaryType.bomber) {
                 flag = true;
             } else {
                 assert.fail("Test failed!");
