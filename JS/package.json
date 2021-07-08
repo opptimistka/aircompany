@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "test": "mocha",
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint --ext .js --fix models/ Planes/ Airport.js index.js"
   },
   "author": {
     "name": "Sniazhana Matskevich"

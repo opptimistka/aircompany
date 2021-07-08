@@ -3,7 +3,7 @@ const MilitaryPlane = require('./Planes/MilitaryPlane');
 const ExperimentalPlane = require('./Planes/ExperimentalPlane');
 
 const militaryType = require('./models/military-type');
-const experimentalType = require('./models/experimental-type');
+// commented out as never used - const experimentalType = require('./models/experimental-type');
 
 class Airport {
   constructor(planes) {
