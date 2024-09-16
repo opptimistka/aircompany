@@ -1,22 +1,14 @@
+/* eslint-disable indent */
 const Plane = require('./Plane');
-
 class PassengerPlane extends Plane {
-
-    //=================CONSTRUCTORS=================
-
-    constructor(model, maxSpeed, maxFlightDistance, maxLoadCapacity, passengersCapacity) {
+    constructor(model, maxSpeed, maxFlightDistance, maxLoadCapacity, passengerCapacity) {
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
-        this._passengersCapacity = passengersCapacity;
+        this.passengerCapacity = passengerCapacity;
     }
 
-    //=================METHODS=================
-    getPassengersCapacity() {
-        return this._passengersCapacity;
+    getPassengerCapacity() {
+        return this.passengerCapacity;
     }
-
-    // set passengersCapacity(value) {
-    //     this._passengersCapacity = value;
-    // }
 }
 
 module.exports = PassengerPlane;
